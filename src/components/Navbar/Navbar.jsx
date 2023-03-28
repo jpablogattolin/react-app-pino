@@ -5,37 +5,24 @@ import CartWidget from "../CartWidget/CardWidget";
 const Navbar = () => {
 
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-            <div className="container-fluid">
-                <div>
-                    <img src="" alt="" />
-                </div>
+            <div>
+                <nav class="navbar bg-dark" data-bs-theme="dark">
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                           <Link to ="/home" className="nav-link active"> </Link> Home
-                        </li>
-                        
-
-                        <li className="nav-item dropdown">
-                           
-                            <ul className="dropdown-menu">
-                              <li> <Link to="/products" className="dropdown-item"> </Link> PRODUCTOS</li>
-
-
-
-                            </ul>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link disabled">Disabled</a>
+                    <ul>
+                        <li>
+                            <Link to="/home">HOME</Link>
+                            <Link to="/products">PRODUCTOS</Link>
                         </li>
                     </ul>
+  
+                </nav>
+
                     <CartWidget />
-                </div>
             </div>
-        </nav>
-    );
+            
+       
+
+   )
 };
 
 export default Navbar;
