@@ -12,17 +12,22 @@ import ProductList from './components/ProductList';
 function App() {
 
    return (
-    <div className="App">
+    <BrowserRouter>
+    
      <Navbar />
      
      <Routes>
      <Route path="/" element={<Navigate to="/home"/>}/>
       <Route path="/home" element={<p>Hola usuarios</p>} />
-      <Route path="/products" element={<ItemListContainer greeting={<h1>"Bienvenidos a nuestra tienda"</h1>} />} />
+      <Route path="/" element={<ItemListContainer greeting={"Listado de todos los productos"} />} />
+      <Route path="/category/:id" element={<ItemListContainer greeting ="listado de categoria" />} />
+      <Route path="/item/id:" element={<ItemDetailContainer />} />
+      <Route path="*" element={<ErrorPage />} />
 
      </Routes>
+     </BrowserRouter>
      
-    </div>
+   
   );
 }
 

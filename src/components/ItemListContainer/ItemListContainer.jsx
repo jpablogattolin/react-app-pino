@@ -21,6 +21,7 @@ export const ItemListContainer = ({
                 <h2 ClassName="text-success">
                     {greeting}
                 </h2>
+                <ProductList productos={productos} />
             </div>
         )
     }
