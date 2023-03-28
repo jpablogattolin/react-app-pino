@@ -11,25 +11,14 @@ import ProductList from './components/ProductList';
 
 function App() {
 
-  const [productos, setProductos] = useState ([])
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-    .then (response => response.json())
-    .then (data => {
-      setProductos (data)
-    })
-  }, [])
-
-
-  return (
+   return (
     <div className="App">
      <Navbar />
-     <ItemListContainer greeting={<h1>"Bienvenidos a nuestra tienda"</h1>} />
+     
      <Routes>
      <Route path="/" element={<Navigate to="/home"/>}/>
       <Route path="/home" element={<p>Hola usuarios</p>} />
-      <Route path="/products" element={<ProductList productos={productos} />} />
+      <Route path="/products" element={<ItemListContainer greeting={<h1>"Bienvenidos a nuestra tienda"</h1>} />} />
 
      </Routes>
      
