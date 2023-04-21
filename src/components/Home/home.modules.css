@@ -1,0 +1,14 @@
+.container {
+    color:aqua;
+    display: flex;
+    justify-content: center;
+    font-size: 0.4 rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+}
+
+.logo {
+    border-radius: 2px solid green;
+}
+
+

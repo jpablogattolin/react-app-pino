@@ -1,21 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CardWidget";
+import styles from "../Navbar/Navbar.modules.css";
 
 const Navbar = () => {
 
     return (
-            <div>
-                <nav class="navbar bg-dark" data-bs-theme="dark">
-
-                    <ul>
-                        <li>
-                            <Link to="/home">HOME</Link>
-                            <Link to="/products">PRODUCTOS</Link>
-                        </li>
-                    </ul>
-  
-                </nav>
+            <div className="titulo">
+                
+                    <Link to="/home">
+                        <h2>HOME</h2>
+                    </Link>
+                    <Link to="/products">
+                        <h2>PRODUCTOS</h2>
+                    </Link>
+               
 
                     <CartWidget />
             </div>

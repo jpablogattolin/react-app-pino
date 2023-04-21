@@ -5,6 +5,7 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import { Navigate, Route, Routes } from 'react-router-dom';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import ErrorPage from './components/ErrorPage';
+import Home from './components/Home';
 
 
 
@@ -12,7 +13,11 @@ function App() {
 
    return (
       
-      <><h1>TIENDA ONLINE</h1><Navbar /><Routes>
+      <>
+      <Home />
+      <Navbar />
+      
+      <Routes>
          <Route path="/" element={<Navigate to="/home" />} />
          <Route path="/products" element={<Navigate to="/products" />} />
          <Route path="/home" element={<p>BIENVENIDOS A TU TIENDA VIRTUAL</p>} />

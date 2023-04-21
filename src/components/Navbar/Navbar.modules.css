@@ -1,0 +1,8 @@
+.titulo {
+    display: flex;
+    justify-content:space-around;
+    border: 2px solid gray;
+    align-items: center;
+    background-color: azure;
+}
+
