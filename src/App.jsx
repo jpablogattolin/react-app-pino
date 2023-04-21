@@ -20,9 +20,9 @@ function App() {
       <Routes>
          <Route path="/" element={<Navigate to="/home" />} />
          <Route path="/products" element={<Navigate to="/products" />} />
-         <Route path="/home" element={<p>BIENVENIDOS A TU TIENDA VIRTUAL</p>} />
+         <Route path="/home" element={<Home />} />
          <Route path="/products" element={<ItemListContainer greeting={"Listado de todos los productos"} />} />
-         <Route path="/category/:id" element={<ItemListContainer greeting={"listado de categoria"} />} />
+         <Route path="/category/:id" element={<ItemListContainer />} />
          <Route path="/item/id:" element={<ItemDetailContainer />} />
          <Route path="*" element={<ErrorPage />} />
       </Routes></>

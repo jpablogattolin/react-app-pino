@@ -1,29 +1,33 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import ProductList from "../ProductList";
+import { collection , getDocs} from "firebase/firestore";
+import db from "../../db/firebase-config";
+import { useParams } from "react-router-dom";
 
-export const ItemListContainer = ({
-    greeting }) => {
 
-        const [productos, setProductos] = useState ([])
 
-        useEffect(() => {
-          fetch("https://fakestoreapi.com/products")
-          .then (response => response.json())
-          .then (data => {
-            setProductos (data)
-          })
+const ItemListContainer = () => {
+  
+    const {categoryId}=useParams();
+
+    const [productos,setProducts]= useState ([])
+
+    const getData=async () => {
+        try {
+            const document= collection (db, "productos")
+            const col = await getDocs (document)
+            const result= col.docs.map ((doc =>doc={id:doc.id,...doc.data()}))
+            setProducts (result)
+        } catch (error) {
+            console.log (error)
+        }
+        }
+
+        useEffect (()=> {
+            getData()
         }, [])
-
-        return (
-            <div>
-                <h2 ClassName="text-success">
-                    {greeting}
-                </h2>
-                <ProductList productos={productos} />
-            </div>
-        )
     }
 
+  
 export default ItemListContainer;
