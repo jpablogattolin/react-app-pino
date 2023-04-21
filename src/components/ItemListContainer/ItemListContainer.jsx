@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { collection , getDocs} from "firebase/firestore";
 import db from "../../db/firebase-config";
 import { useParams } from "react-router-dom";
+import ProductList from "../ProductList";
 
 
 
@@ -27,6 +28,12 @@ const ItemListContainer = () => {
         useEffect (()=> {
             getData()
         }, [])
+
+        return (
+            <>
+            <ProductList productos={productos}></ProductList>
+            </>
+        )
     }
 
   

@@ -4,5 +4,6 @@
     border: 2px solid gray;
     align-items: center;
     background-color: azure;
+    list-style-type: none;
 }
 
