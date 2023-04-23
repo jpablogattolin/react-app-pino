@@ -1,8 +1,7 @@
-.componente {
+.maintitle {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 1 rem;
-    color: skyblue;
-
+    font-size: 0.8 rem;
+    color: slateblue;
 }

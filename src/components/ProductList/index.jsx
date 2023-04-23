@@ -1,10 +1,19 @@
 import React from "react";
 
+
 const ProductList = ({productos}) => {
-    return <div> 
+    return (
+    <div className="container text-center mt-5"> 
        { productos.map ((producto) => (
-        <h3 key={producto.id}>{producto.title}</h3>))}
+      <div className="card"  key={producto.id}>
+           <h3>{producto.title}</h3>
+           <p>{producto.price}</p>
+           <p>{producto.description}</p>
+           <img src={producto.image} alt={producto.title} />
+      </div>
+       ))};
         </div>
+    )
 };
 
 export default ProductList;
