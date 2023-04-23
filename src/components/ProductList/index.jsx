@@ -10,6 +10,7 @@ const ProductList = ({productos}) => {
            <p>{producto.price}</p>
            <p>{producto.description}</p>
            <img src={producto.image} alt={producto.title} />
+           <button>Añadir a Carrito</button>
       </div>
        ))};
         </div>

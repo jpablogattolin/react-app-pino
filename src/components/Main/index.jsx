@@ -6,7 +6,7 @@ export const Main = () => {
   return (
     <div>
         <h2 className="title">Encontraras variedad de productos de las mejores marcas y calidad</h2>
-        <img src={hallphoto} alt="" />
+        <img  src={hallphoto} className="photo" alt="{producto.image}" />
     </div>
   )
 }
