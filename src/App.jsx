@@ -7,6 +7,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import ErrorPage from './components/ErrorPage';
 import Home from './components/Home';
 import Main from './components/Main';
+import ShoppingCart from './components/ShoppingCart';
 
 
 
@@ -24,7 +25,7 @@ function App() {
          <Route path="/home" element={<Main />} />
          <Route path="/productos" element={<ItemListContainer />} />
          <Route path="/category/:id" element={<ItemListContainer />} />
-         <Route path="/item/id:" element={<ItemDetailContainer />} />
+         <Route path="/cart" element={<ShoppingCart />} />
          <Route path="*" element={<ErrorPage />} />
       </Routes></>
 

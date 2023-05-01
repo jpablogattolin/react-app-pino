@@ -5,6 +5,7 @@ const CartWidget = () => {
     return  (
         <div>
             <FaShoppingCart size={"1.5rem"} color={"blue"} />
+            <p className="counter">0</p>
         </div>
     )
 }
