@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import ItemList from '../ItemList/ItemList.jsx';
 import { useParams } from 'react-router-dom';
 import { getAllItems as getProductos, getItemsByCategory} from "../../db/firebase-config";
 
 
 import { Link } from 'react-router-dom';
+import { Breadcrumb, Container } from 'react-bootstrap';
 
 
 function ItemListContainer( {greeting, items} ) {
