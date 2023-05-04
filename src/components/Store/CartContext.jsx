@@ -7,11 +7,11 @@ const useCartContext = () => useContext(CartContext);
 
 export function CartContextProvider( {children} ) {
     const [cart, setCart] = useState([]);
-    const addToCart = ( item, cant ) => {
-        if (isInCart(item.id)){
-           const newCart = cart.map(cartItem => {
-                if (cartItem.id === item.id){
-                const copyItem = {...cartItem};
+    const addToCart = ( productos, cant ) => {
+        if (isInCart(productos.id)){
+           const newCart = cart.map(cartProductos => {
+                if (cartProductos.id === productos.id){
+                const copyItem = {...cartProductos};
                 copyItem.cant += cant;
                 return copyItem;
                 }
@@ -22,7 +22,7 @@ export function CartContextProvider( {children} ) {
                 setCart(newCart);
     } 
     else{
-        const newItem = {...item, cant};
+        const newItem = {...productos, cant};
         setCart([...cart, newItem]);
     }
 }
@@ -30,17 +30,17 @@ export function CartContextProvider( {children} ) {
 // Revisamos si el item está en el cart
 
 const isInCart = (id) => {
-    return cart.some((item) => item.id === id);
+    return cart.some((producto) => productos.id === id);
   };
 
   const estaEnCarrito = (id) => {
-    return cart.some((item) => item.id === id);
+    return cart.some((producto) => producto.id === id);
   };
 
 // Obtenemos un item específico del cart
 
   const getItemFromCart = (id) => {
-    return cart.find((item) => item.id === id);
+    return cart.find((producto) => producto.id === id);
   };
 
 // Leemos la cantidad de unidades del item específico

@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore (app);
 
 export async function getAllItems() {
-  const miProducts = collection(getFirestore,"productos");
+  const miProducts = collection(db,"productos");
   const itemsSnapshot = await getDocs(miProducts);
 
   return itemsSnapshot.docs.map(doc => {
