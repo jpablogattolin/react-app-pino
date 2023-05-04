@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, getDoc, addDoc, query, where, collection, getDocs, Timestamp } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -15,5 +15,54 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore (app);
+
+export async function getAllItems() {
+  const miProducts = collection(getFirestore,"items");
+  const itemsSnapshot = await getDocs(miProducts);
+
+  return itemsSnapshot.docs.map(doc => {
+      return {
+      ...doc.data(),
+      id: doc.id
+      }
+})};
+
+export async function getItemsByCategory(category){
+  const miProducts = collection(getFirestore,'items');
+  const queryItem = query(miProducts, where("category", '==', category));
+  const itemSnapshot = await getDocs(queryItem);
+
+  return itemSnapshot.docs.map(doc => {
+      return {
+      ...doc.data(),
+      id: doc.id
+      }
+
+})};
+
+export async function getItem(id){
+  const miProducts = collection(getFirestore,'items');
+  const itemRef = doc(miProducts, id);
+  const itemSnapshot = await getDoc(itemRef);
+
+
+      return {
+      ...itemSnapshot.data(),
+      id: itemSnapshot.id
+      }
+
+};
+
+export async function createBuyOrder(orderData){
+  const buyTimeStamp = Timestamp.now();
+  const orderWithDate = {
+      ...orderData,
+      date: buyTimeStamp
+  };
+  const miProducts = collection(getFirestore,'buyOrders');
+  const orderDoc = await addDoc(miProducts, orderWithDate);
+  console.log("Orden lista con el id ",orderDoc.id);
+  return orderDoc.id;   
+}
 
 export default db;

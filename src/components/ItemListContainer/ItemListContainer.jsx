@@ -1,40 +1,70 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { collection , getDocs} from "firebase/firestore";
-import db from "../../db/firebase-config";
-import { useParams } from "react-router-dom";
-import ProductList from "../ProductList";
+import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import ItemList from '../ItemList/ItemList.jsx';
+import { useParams } from 'react-router-dom';
+import { getAllItems as getProductos, getItemsByCategory} from "../../db/firebase-config";
 
 
+import { Link } from 'react-router-dom';
 
-const ItemListContainer = () => {
-  
-    const {categoryId}=useParams();
 
-    const [productos,setProductos]= useState ([])
+function ItemListContainer( {greeting, items} ) {
+    const [loading, setLoading] = useState(true);
+    const [productos, setProductos] = useState([]);
+    const { category } = useParams();
 
-    const getData = async () => {
-        try {
-            const document= collection (db, "productos")
-            const col = await getDocs (document)
-            const result= col.docs.map ((doc =>doc={id:doc.id,...doc.data()}))
-            setProductos (result)
-        } catch (error) {
-            console.log (error)
-        }
-        }
+    useEffect(() => {
+        if (category === undefined) {
+     document.title = 'JIMP iTech! Catálogo';       
+    getProductos().then(respuestaPromise => {
+        setProductos(respuestaPromise);
+        setLoading(false);
+    }); } else {
+        document.title = `JIMP iTech! ${category}`;
+    getItemsByCategory(category).then(respuestaPromise => {
+        setProductos(respuestaPromise);
+        setLoading(false);
+    }); }   
+    }, [category]);
 
-        useEffect (()=> {
-            getData()
-        }, [])
+   function setCatPath(){
+    if (category) {
+        return <Container className="d-flex text-center justify-content-center mb-10 pb-10 align-items-center p-5"><Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>catálogo</Breadcrumb.Item><Breadcrumb.Item active>{category}</Breadcrumb.Item></Container>;
+    }   else {
+        return <Container className="d-flex text-center justify-content-center mb-10 pb-10 align-items-center p-5"><Breadcrumb.Item active>catálogo</Breadcrumb.Item></Container>;
+    }
+}
 
-        return (
-            <>
-            <ProductList productos={productos}></ProductList>
-            </>
-        )
+
+if(loading){
+  return <section id="menu" className="py-5 text-center container">
+
+  <div className="album bg-degrade py-5">
+  <div className="container">
+    <div className="">
+   
+    </div></div></div>
+</section>
+
+
+}
+return (
+        <section id="menu" className="text-center container slide-in-fwd-center">
+   <Container className="d-flex text-center justify-content-center mb-10 pb-10 align-items-center"><Breadcrumb>
+
+{setCatPath()}
+    </Breadcrumb></Container> 
+        <div className="album">
+        <div className="container">
+          <div className="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-3 g-3">
+          <ItemList items={productos} />
+          </div></div></div>
+
+      </section>
+
+
+        );
     }
 
-  
-export default ItemListContainer;
+    export default ItemListContainer;
