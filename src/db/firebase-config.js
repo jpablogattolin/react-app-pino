@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore (app);
 
 export async function getAllItems() {
-  const miProducts = collection(getFirestore,"items");
+  const miProducts = collection(getFirestore,"productos");
   const itemsSnapshot = await getDocs(miProducts);
 
   return itemsSnapshot.docs.map(doc => {
@@ -28,7 +28,7 @@ export async function getAllItems() {
 })};
 
 export async function getItemsByCategory(category){
-  const miProducts = collection(getFirestore,'items');
+  const miProducts = collection(getFirestore,'productos');
   const queryItem = query(miProducts, where("category", '==', category));
   const itemSnapshot = await getDocs(queryItem);
 
@@ -41,7 +41,7 @@ export async function getItemsByCategory(category){
 })};
 
 export async function getItem(id){
-  const miProducts = collection(getFirestore,'items');
+  const miProducts = collection(getFirestore,'productos');
   const itemRef = doc(miProducts, id);
   const itemSnapshot = await getDoc(itemRef);
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemList from '../ItemList/ItemList.jsx';
+import ProductList from "../ProductList/index.jsx";
 import { useParams } from 'react-router-dom';
 import { getAllItems as getProductos, getItemsByCategory} from "../../db/firebase-config";
 
@@ -58,7 +58,7 @@ return (
         <div className="album">
         <div className="container">
           <div className="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-3 g-3">
-          <ItemList items={productos} />
+          <ProductList items={productos} />
           </div></div></div>
 
       </section>
