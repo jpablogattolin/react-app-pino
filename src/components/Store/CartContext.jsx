@@ -30,7 +30,7 @@ export function CartContextProvider( {children} ) {
 // Revisamos si el item está en el cart
 
 const isInCart = (id) => {
-    return cart.some((producto) => productos.id === id);
+    return cart.some((producto) => producto.id === id);
   };
 
   const estaEnCarrito = (id) => {

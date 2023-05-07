@@ -1,13 +1,20 @@
-import React from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import React from 'react';
 
-const CartWidget = () => {
-    return  (
-        <div>
-            <FaShoppingCart size={"1.5rem"} color={"blue"} />
-            <p className="counter">0</p>
-        </div>
-    )
+import {LinkContainer} from 'react-router-bootstrap';
+
+import useCartContext from '../Store/CartContext';
+
+function CartWidget(props) {
+  const { itemsTotal } = useCartContext();
+  return (
+<LinkContainer to="/cart" className="text-dark">
+<div>
+      <FontAwesomeIcon icon={faCartShopping} size="2x" color="black" />
+      { itemsTotal()? <div className="mostrar-cantidad">{itemsTotal()}</div>
+      : <div className="mostrar-cantidad2">{itemsTotal()}</div> }
+
+    </div>
+</LinkContainer>
+);
 }
-
 export default CartWidget;
